@@ -3,41 +3,47 @@ How to set up raspberry pi in kiosk mode
 
 1. Setting up Rasbian OS
 If you dont have a Rasbian OS settup on the raspberri pi, click on the link below for a tutorial
-    https://www.raspbian.org/FrontPage
+
+        https://www.raspbian.org/FrontPage
 
 2. Update rasbian package list
-    $ ~sudo apt-get update && sudo apt-get upgrade -y
+
+        $ ~sudo apt-get update && sudo apt-get upgrade -y
 
 3. install the chromium browser, x11 server utilities and unclutter(removes the cursor from the screen)
-    $ ~sudo apt-get install chromium 
-    $ ~sudo apt-get install x11-xserver-utils      
-    $ ~sudo apt-get install unclutter 
+    
+        $ ~sudo apt-get install chromium 
+        $ ~sudo apt-get install x11-xserver-utils      
+        $ ~sudo apt-get install unclutter 
 
 4. Setup up SSH on raspberry pi
 Make sure that the pi is pluged in and connected to the network. *in raspberri pie terminal
-    $ ~ifconfig
+
+        $ ~ifconfig
 
                     *Write down address, netmask, and gateway.*
 
 5. Now in terminal we are going to edit your network settings and setup the static address.
-    $ ~sudo nano /etc/network/interfaces
+
+        $ ~sudo nano /etc/network/interfaces
 
 6. This will open up your network interfaces file, start by changing the line that says
-    iface eth0 inet manual
-    to
-    iface eth0 inet static
+
+        iface eth0 inet manual
+        to
+        iface eth0 inet static
 
 7. Now you’ll need to add 3 lines straight after, if they aren’t already there.
 
-    address xxx.xxx.xxx.xxx
-    netmask 255.255.255.0
-    gateway xxx.xxx.xxx.xxx
+        address xxx.xxx.xxx.xxx
+        netmask 255.255.255.0
+        gateway xxx.xxx.xxx.xxx
 
-    hit ctrl-O to write the file and then ctrl+X to get yourself back to your terminal screen.
+        hit ctrl-O to write the file and then ctrl+X to get yourself back to your terminal screen.
 
 8. Now that you have a static address set you can enable SSH on the pi. We’ll use the wizard that comes with raspbian.
 
-    $ ~sudo raspi-config
+        $ ~sudo raspi-config
 
     1. change your user password. The default username is pi and the default password is raspberry.
 
@@ -45,7 +51,7 @@ Make sure that the pi is pluged in and connected to the network. *in raspberri p
 
 10. test that SSH is working *in an other computer* 
 
-    $ ~ssh pi@xxx.xxx.xxx.xxx
+        $  ~ssh pi@xxx.xxx.xxx.xxx
 
     Where the X’s represent the static address you gave your Pi in the previous part. If it’s worked you should be asked for your password. Enter the password you chose for your Pi.
 
@@ -101,6 +107,7 @@ Kiosk Does not boot into kiosk mode
         Comment=Start Chromium when GNOME starts
         
 3.  reboot pi
+
         sudo reboot
         
 
